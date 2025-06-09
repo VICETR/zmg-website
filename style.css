@@ -1,0 +1,132 @@
+/* --- ORGANIZED STYLING FOR MULTI-PAGE SITE --- */
+
+/* -- 1. Global Settings & Color Variables -- */
+:root {
+    --color-background: #121212;
+    --color-primary: #1DB954;
+    --color-text: #FFFFFF;
+    --color-text-muted: #B3B3B3;
+    --color-surface: #181818;
+    --font-family: 'Poppins', sans-serif;
+    --transition-speed: 0.5s;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    /* Animation: This makes the page fade in */
+    opacity: 0;
+    animation: fadeInPage 1s ease-out forwards;
+}
+
+/* -- 2. Reusable Components (Buttons, Titles) -- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+    margin: 5px;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    background-color: #1ed760;
+}
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--color-text-muted);
+}
+.btn-secondary:hover {
+    background-color: var(--color-surface);
+    border-color: var(--color-text);
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* -- 3. Header & Footer -- */
+.main-header {
+    position: sticky; top: 0;
+    width: 100%;
+    background-color: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    padding: 1rem 5%;
+}
+nav { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 700; }
+.logo-link { color: var(--color-text); text-decoration: none; }
+nav ul { list-style: none; display: flex; }
+nav ul li { margin-left: 2rem; }
+.nav-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+.nav-link:hover { color: var(--color-text); }
+/* Style for the link of the current page */
+.nav-link.active { color: var(--color-primary); font-weight: 700; }
+
+.main-footer { text-align: center; padding: 2rem; margin-top: auto; color: var(--color-text-muted); font-size: 0.9rem; }
+body { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex-grow: 1; }
+
+
+/* -- 4. Page Specific Styling -- */
+/* Home Page */
+.hero-section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 5%;
+    background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 1)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070') no-repeat center center/cover;
+}
+.hero-content h1 { font-size: 4rem; font-weight: 700; margin-bottom: 1rem; }
+.hero-content p { font-size: 1.5rem; color: var(--color-text-muted); margin-bottom: 2rem; }
+
+/* Generic Content Pages (Labels, About, Contact) */
+.page-content { padding: 5rem 10%; max-width: 1200px; margin: 0 auto; }
+.label-showcase, .text-container {
+    background-color: var(--color-surface);
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    margin-bottom: 3rem;
+}
+.label-showcase h2 { font-size: 2rem; color: var(--color-primary); margin-bottom: 1rem; }
+.text-container p, .label-showcase p { color: var(--color-text-muted); margin-bottom: 1rem; }
+.artist-roster { margin-top: 1.5rem; }
+.artist-roster h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.artist-roster ul { list-style: none; padding-left: 0; }
+.artist-roster li { padding: 5px 0; border-bottom: 1px solid #333; }
+.text-container h3 { margin-top: 2rem; font-size: 1.5rem; color: var(--color-primary); }
+.email-link { display: inline-block; margin-top: 1rem; font-size: 1.5rem; font-weight: 600; color: var(--color-primary); text-decoration: none; }
+
+/* -- 5. Animation Classes -- */
+@keyframes fadeInPage { to { opacity: 1; } }
+.anim-fade-in { opacity: 0; animation: fadeInContent 1s 0.5s ease-out forwards; }
+.anim-delay-1 { animation-delay: 0.7s; }
+.anim-delay-2 { animation-delay: 0.9s; }
+@keyframes fadeInContent { to { opacity: 1; } }
+
+.anim-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--transition-speed) ease-out, transform var(--transition-speed) ease-out;
+}
+.anim-on-scroll.visible { opacity: 1; transform: translateY(0); }/* CSS Document */
+
